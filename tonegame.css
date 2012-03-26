@@ -60,7 +60,7 @@ h1 {
 }
 
 #scale .boxes {
-  width: 1050px;
+  width: auto;
 }
 
 #scale .box {
