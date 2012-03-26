@@ -88,7 +88,7 @@
     setupClueBoxes();
     $('#target .boxes .box').click(); //click to remove
     var boxWidth = $('#scale .boxes .box').width();
-    $('#target .boxes').width(numberOfNotes * (boxWidth + 10));
+    $('#target .boxes').width(numberOfNotes * (boxWidth + 40));
   }
 
   function updateScore(by) {
@@ -151,6 +151,9 @@
       $boxes.append($box);
       if (scale.indexOf(i) > -1) { //this is a note
         $box.attr('data-scale-index', scale.indexOf(i));
+        note = (scale.indexOf(i));
+        if(note > 4){ note = note -7; } // work out the actual note name, assuming its a progression
+        $box.text(" " + String.fromCharCode(note+67)); // grab the ASCII character
         $box.addClass('in-scale');
         $box.attr('draggable', 'true');
         $box.on('dragstart', function (e) {
@@ -170,7 +173,7 @@
     $('#clue .boxes').empty();
 
     for (var i = 0; i < chosenIndexes.length; i++) {
-      $('#clue .boxes').append('<div class="box"><p class="question-mark">?</p></div>');
+      $('#clue .boxes').append('<div class="box"><span class="question-mark">?</span></div>');
     }
   }
 
