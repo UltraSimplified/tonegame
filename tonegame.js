@@ -6,6 +6,7 @@
     { notes: 3, scale: [0, 1, 4, 5, 7, 8, 10, 12] },
     { notes: 4, scale: [0, 2, 4, 5, 7, 9, 11, 12, 14] }
   ];
+  var notenames = ['A','B<sup>&#9837;</sup>','B','C','C<sup>&#9839;</sup>','D','E','F','F<sup>&#9839</sup>','G','A<sup>&#9837</sup>'];
   var level = 0;
   var score = 10;
   var scale;
@@ -151,9 +152,8 @@
       $boxes.append($box);
       if (scale.indexOf(i) > -1) { //this is a note
         $box.attr('data-scale-index', scale.indexOf(i));
-        note = (scale.indexOf(i));
-        if(note > 4){ note = note -7; } // work out the actual note name, assuming its a progression
-        $box.text(" " + String.fromCharCode(note+67)); // grab the ASCII character
+        var note = (i > 10) ? 1 : i; // wrap the scale at the end of the octave
+        $box.html(notenames[note]); // grab the ASCII character
         $box.addClass('in-scale');
         $box.attr('draggable', 'true');
         $box.on('dragstart', function (e) {
