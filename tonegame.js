@@ -152,7 +152,7 @@
       $boxes.append($box);
       if (scale.indexOf(i) > -1) { //this is a note
         $box.attr('data-scale-index', scale.indexOf(i));
-        var note = (i > 10) ? 1 : i; // wrap the scale at the end of the octave
+        var note = (i > 10) ? i-10 : i; // wrap the scale at the end of the octave
         $box.html(notenames[note]); // grab the ASCII character
         $box.addClass('in-scale');
         $box.attr('draggable', 'true');
